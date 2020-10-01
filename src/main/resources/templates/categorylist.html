@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.Thymeleaf.org">
+<head>
+<title>Books</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Categories</h1>
+	<table>
+		<tr>
+			<th>Name</th>
+		</tr>
+		<tr th:each="category : ${categories}">
+		<td th:text="${category.name}">Name</td> 
+		</tr>
+		
+	</table>
+	<a href ="/addcat" class="btn btn-primary">Add category</a>
+</body>
