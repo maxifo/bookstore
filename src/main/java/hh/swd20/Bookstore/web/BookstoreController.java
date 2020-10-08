@@ -1,11 +1,16 @@
 package hh.swd20.Bookstore.web;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import hh.swd20.Bookstore.domain.Book;
 import hh.swd20.Bookstore.domain.BookRepository;
@@ -76,4 +81,21 @@ public class BookstoreController {
 		categoryRepository.save(category);
 		return "redirect:categorylist";
 	}
+
+	@RequestMapping(value = "/books", method = RequestMethod.GET)
+	public @ResponseBody List<Book> bookListREST() {
+		return (List<Book>) bookRepository.findAll();
+	}
+
+	@RequestMapping(value = "/books/{id}", method = RequestMethod.GET)
+	public @ResponseBody Optional<Book> getCarRest(@PathVariable("id") Long id) {
+		return bookRepository.findById(id);
+	}
+
+	@RequestMapping(value = "/books", method = RequestMethod.POST)
+	public @ResponseBody Book saveBookREST(@RequestBody Book book) {
+		bookRepository.save(book);
+		return book;
+	}
+
 }

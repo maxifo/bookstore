@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Category {
 	@Id
@@ -17,6 +19,7 @@ public class Category {
 	private String name;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+	@JsonIgnoreProperties("category")
 	private List<Book> books;
 
 	public Category() {
@@ -53,8 +56,7 @@ public class Category {
 
 	@Override
 	public String toString() {
-		// Do not insert list attribute students here! Otherwise execution of this
-		// method causes an infinite loop.
+
 		return "Category [catid=" + catid + ", name=" + name + "]";
 	}
 }
