@@ -22,6 +22,12 @@
 	<label for="year">Year</label>
 	<input type ="text" id="year" th:field="*{year}" class="form-control"/>
 	<div style="clear: both; display: block; height: 10px;" ></div>
+	<div style="clear: both; display: block; height: 10px;"></div>						
+		  	<label for="catlist">Category</label>
+			 <select id="catlist" th:field="*{category}" class="form-control">
+       			<option th:each="category: ${categories}" th:value="${category.catid}" th:text="${category.name}"></option>
+    		</select>
+			
 	
 	<div style ="clear: both; display: block; height: 10px;"></div>
 	<input type ="submit" class= "btn btn-primary" value="Save"></input>
