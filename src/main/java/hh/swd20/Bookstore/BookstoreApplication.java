@@ -9,6 +9,8 @@ import hh.swd20.Bookstore.domain.Book;
 import hh.swd20.Bookstore.domain.BookRepository;
 import hh.swd20.Bookstore.domain.Category;
 import hh.swd20.Bookstore.domain.CategoryRepository;
+import hh.swd20.Bookstore.domain.User;
+import hh.swd20.Bookstore.domain.UserRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -18,7 +20,8 @@ public class BookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(BookRepository bookRepository, CategoryRepository categoryRepository) {
+	public CommandLineRunner demo(BookRepository bookRepository, CategoryRepository categoryRepository,
+			UserRepository userrepository) {
 		return (args) -> {
 
 			Category category1 = new Category("Horror");
@@ -27,6 +30,12 @@ public class BookstoreApplication {
 			categoryRepository.save(category2);
 			bookRepository.save(new Book("Test1", "Test1", 1990, 91939, 50.0, category1));
 			bookRepository.save(new Book("Test2", "Test2", 1980, 23219, 45.0, category2));
+
+			// Create users: admin/admin user/user
+			User user1 = new User("vieras", "$2a$10$OyQcwGCi50UXxxWJFGQQxeV8zA12z8f2W.2pHCfZbgx0tGKscEsdC", "USER");
+			User user2 = new User("max", "$2a$10$ITs0T5Q7bzzESYcaIFBaBeZRtVl1KDhaXzT5BAdvDEqk5JBC30sVm", "ADMIN");
+			userrepository.save(user1);
+			userrepository.save(user2);
 		};
 
 	}
