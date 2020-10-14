@@ -25,8 +25,8 @@ public class BookstoreApplication {
 			Category category2 = new Category("Scifi");
 			categoryRepository.save(category1);
 			categoryRepository.save(category2);
-			bookRepository.save(new Book("The Holy Bible", "Jesus", 1990, 91939, 50.0, category1));
-			bookRepository.save(new Book("Atlas of the world", "Mike Hunt", 1980, 23219, 45.0, category2));
+			bookRepository.save(new Book("Test1", "Test1", 1990, 91939, 50.0, category1));
+			bookRepository.save(new Book("Test2", "Test2", 1980, 23219, 45.0, category2));
 		};
 
 	}

@@ -5,7 +5,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>Books</h1>
+<h1 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h1>
+	<h2>Books</h2>
 	<table>
 		<tr>
 			<th>Author</th>
@@ -14,6 +15,7 @@
 			<th>Year</th>
 			<th>Category</th>
 		</tr>
+		
 		<tr th:each="book : ${books}">
 		<td th:text="${book.author}">Author</td> 
 		<td th:text="${book.title}">Title</td> 
@@ -25,6 +27,12 @@
 		</tr>
 		
 	</table>
+	
 	<a href ="/add" class="btn btn-primary">Add Book</a>
+	<div class="col-md-4" style="padding:20px 0">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+		</form>
+	</div>
 </body>
 </html>
